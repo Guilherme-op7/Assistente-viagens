@@ -23,35 +23,38 @@ let ler = prompt()
     inglaterra: { moeda: "Libra Esterlina", cambio: 6.4, clima: "Frio e úmido", tempoVoo: 11 },
     tailandia: { moeda: "Baht", cambio: 0.15, clima: "Tropical", tempoVoo: 20 },
     africadosul: { moeda: "Rand", cambio: 0.28, clima: "Subtropical", tempoVoo: 9 },
-    coreiasul: { moeda: "Won", cambio: 0.004, clima: "Temperado", tempoVoo: 24 }
+    coreiasul: { moeda: "Won", cambio: 0.004, clima: "Temperado", tempoVoo: 24},
+    Belgica: {moeda: "euro belgas", cambio: 5.2, clima: " temperado", tempoVoo:14},
+    Russia: {moeda:"Rublo Russo", cambio: 14,13 , clima: "Continental Úmido", tempoVoo:32}
+
   }
 
   // Função principal
   export async function iniciarAssistente() {
-    console.log("🌍 Bem-vindo ao Voegol - Assistente de Viagem!")
+    console.log("✊ Bem vindo ao voegol, seu assistente de viagemm!")
     await sleep(2000);
     let nome = ler("Qual seu nome? ")
-    await sleep(2000);
     console.log("Olá, " + nome + "! Vamos planejar sua viagem!")
-    await sleep(2000);
     escolherDestino()
   }
 
   // Escolha do destino
   export async function escolherDestino() {
-    console.log("\nDestinos disponíveis:")
+    console.log("Destinos disponíveis:")
 
     // Mostra todos os destinos 
     for (let nome in destinos) {
       console.log("- " + nome)
-              await sleep(2000);
+      await sleep(550);
     }
+
   //escolha do local
     let destino = ler("Digite o destino: ")
 
     if (destinos[destino]) {
       mostrarInfoDestino(destino)
       planejar(destino)
+      await sleep(1000);
     } else {
       console.log("Destino não encontrado, tente novamente.")
       escolherDestino()
@@ -69,6 +72,7 @@ let ler = prompt()
     console.log(`Clima: ${info.clima}`)
     await sleep(1000);
     console.log(`Tempo médio de voo: ${info.tempoVoo} horas`)
+    await sleep(1000);
   }
   
   // Planejar viagem
@@ -83,12 +87,12 @@ let ler = prompt()
     let moedaLocal = destinos[destino].moeda
     let valorConvertido = converterMoeda(destino, totalReal)
     await sleep(2000);
-    console.log(`Total estimado: R$${totalReal.toFixed(2)}`)
+    console.log(`Total estimado: R$${totalReal}`)
     await sleep(2000);
-    console.log(`Convertido em ${moedaLocal}: ${valorConvertido.toFixed(2)} ${moedaLocal}`)
+    console.log(`Convertido em ${moedaLocal}: ${valorConvertido} ${moedaLocal}`)
     
     //escolha de roteiro de viagem
-    let querRoteiro = ler("Deseja criar um roteiro de viagem? (sim/nao) ").toLowerCase()
+    let querRoteiro = ler("Deseja criar um roteiro de viagem? (sim/nao) ")
     if (querRoteiro === 'sim') {
       criarRoteiro(dias)
     } else {
