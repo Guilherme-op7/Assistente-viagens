@@ -139,9 +139,9 @@ Aprendi muito sobre funções, objetos, repetição, condicional e interatividad
 
 ---
 
-✍️ Autor
+✍️ Autores
 
-Guilherme dos Santos Neto
+Guilherme dos Santos Neto, Ana Clara Rocha
 
 
 ---
